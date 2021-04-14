@@ -56,7 +56,6 @@ const io = Socket(httpServer, {
 app.use(
   cors({
     origin: process.env.CLIENT_SIDE_URL, // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })
 );
@@ -71,13 +70,12 @@ app.use(
     name: "LHsession",
     secret: process.env.COOKIE_SECRET,
     resave: true,
+    saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie: {
-      sameSite: false,
-      maxAge: 8.64e7,
-      secure: false,
-      httpOnly: false,
-    },
+      sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', // must be 'none' to enable cross-site delivery
+      secure: process.env.NODE_ENV === "production", // must be true if sameSite='none'
+    }
   })
 );
 // utility for monitoring requests
