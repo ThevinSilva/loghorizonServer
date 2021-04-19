@@ -5,8 +5,7 @@
 
 Loghorizon is a slack and discord inspired social networking platform. It provides both direct messaging and forum like online messaging board capabilities. It's named after a light novel series of the same name.
 ## LINK
->  https://keen-bhaskara-257c68.netlify.app/ <
->  https://www.thevinsilva.com <
+>  https://keen-bhaskara-257c68.netlify.app/ 
 
 # NOTE
 ## BUGS / ISSUES
